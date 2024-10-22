@@ -1,0 +1,112 @@
+<p-dialog #editingDialog
+          *ngIf="gridDataEditor.dialogRequired"
+          [(visible)]="gridDataEditor.editingDialogVisible"
+          [modal]="true"
+          [draggable]="false"
+          [style]="{'max-width': '600px', width: '100%'}"
+          [header]="gridDataEditor.creationState ? 'Создание' : 'Изменение'"
+          appendTo="body"
+          class="editing-dialog"
+          (onHide)="onEditingDialogHide()">
+    <form *ngIf="gridDataEditor.formGroup" [formGroup]="gridDataEditor.formGroup" class="inputs-group">
+        <ng-container *ngFor="let column of gridDataEditor.columns">
+            <div *ngIf="gridDataEditor.isEditableColumn(column)" class="inputs-group-row">
+                <label [ngClass]="{'asterisk-mark': gridDataEditor.isRequiredColumn(column), 'inputs-group-row-name': true, 'capitalized-label': !column.label}">
+                    {{column.label ? column.label : column.header}}
+                </label>
+                <div [ngSwitch]="column.cellEditingInputType" class="inputs-group-row-value">
+                    <p-inputNumber *ngSwitchCase="_cellEditingInputTypeEnum.Number"
+                                   [formControlName]="column.field"
+                                   [showButtons]="true"
+                                   [step]="column.numericInputStep ? column.numericInputStep : 1"
+                                   [max]="column.numericInputMax"
+                                   [min]="column.numericInputMin"
+                                   [maxFractionDigits]="column.numericInputMaxFractionDigits"
+                                   mode="decimal"
+                                   locale="en-US"
+                                   [placeholder]="column.inputPlaceholder ? column.inputPlaceholder : ''"
+                                   [disabled]="column.disabledFunc && column.disabledFunc(gridDataEditor.editableRow, gridDataEditor.formGroup.value)">
+                    </p-inputNumber>
+                    <p-calendar *ngSwitchCase="_cellEditingInputTypeEnum.Calendar"
+                                [formControlName]="column.field"
+                                [dateFormat]="column.calendarDateFormat ? column.calendarDateFormat : null"
+                                [showIcon]="true"
+                                [showButtonBar]="true"
+                                [showTime]="column.calendarShowTime"
+                                [hourFormat]="column.calendarHourFormat ? column.calendarHourFormat : '12'"
+                                [readonlyInput]="true"
+                                [yearNavigator]="true"
+                                [yearRange]="column.calendarYearRange ? column.calendarYearRange : gridDataEditor.defaultCalendarYearRange"
+                                [monthNavigator]="true"
+                                [placeholder]="column.inputPlaceholder ? column.inputPlaceholder : ''"
+                                [appendTo]="editingDialog"
+                                [disabled]="column.disabledFunc && column.disabledFunc(gridDataEditor.editableRow, gridDataEditor.formGroup.value)">
+                    </p-calendar>
+                    <p-checkbox *ngSwitchCase="_cellEditingInputTypeEnum.Checkbox"
+                                [formControlName]="column.field"
+                                [binary]="true"
+                                [disabled]="column.disabledFunc && column.disabledFunc(gridDataEditor.editableRow, gridDataEditor.formGroup.value)">
+                    </p-checkbox>
+                    <p-dropdown *ngSwitchCase="_cellEditingInputTypeEnum.Dropdown"
+                                [formControlName]="column.field"
+                                [options]="gridDataEditor.getDropDownOptions(column)"
+                                [dataKey]="column.dropdownOptionsDataKey"
+                                [filter]="column.dropdownFilterEnabled"
+                                [filterBy]="column.dropdownFilterBy"
+                                [showClear]="column.dropdownShowClear"
+                                [appendTo]="editingDialog"
+                                [placeholder]="column.inputPlaceholder ? column.inputPlaceholder : ''"
+                                [disabled]="column.disabledFunc && column.disabledFunc(gridDataEditor.editableRow, gridDataEditor.formGroup.value)">
+                    </p-dropdown>
+                    <p-multiSelect *ngSwitchCase="_cellEditingInputTypeEnum.Multiselect"
+                                   [formControlName]="column.field"
+                                   [options]="gridDataEditor.getDropDownOptions(column)"
+                                   [dataKey]="column.dropdownOptionsDataKey"
+                                   [defaultLabel]="column.inputPlaceholder ? column.inputPlaceholder : ''"
+                                   [filter]="column.dropdownFilterEnabled"
+                                   [filterBy]="column.dropdownFilterBy"
+                                   [showClear]="column.dropdownShowClear"
+                                   [appendTo]="editingDialog"
+                                   [disabled]="column.disabledFunc && column.disabledFunc(gridDataEditor.editableRow, gridDataEditor.formGroup.value)">
+                    </p-multiSelect>
+                    <textarea *ngSwitchCase="_cellEditingInputTypeEnum.Textarea"
+                              pInputTextarea
+                              [formControlName]="column.field"
+                              [placeholder]="column.inputPlaceholder ? column.inputPlaceholder : ''"
+                              [disabled]="column.disabledFunc && column.disabledFunc(gridDataEditor.editableRow, gridDataEditor.formGroup.value)">
+                    </textarea>
+                    <input *ngSwitchDefault
+                           pInputText
+                           [formControlName]="column.field"
+                           [placeholder]="column.inputPlaceholder ? column.inputPlaceholder : ''"
+                           [disabled]="column.disabledFunc && column.disabledFunc(gridDataEditor.editableRow, gridDataEditor.formGroup.value)"/>
+
+                    <ng-container *ngIf="gridDataEditor.formGroup.controls[column.field].dirty && gridDataEditor.formGroup.controls[column.field].errors">
+                        <span *ngFor="let error of gridDataEditor.getErrorMessagesForControl(column, gridDataEditor.formGroup.controls[column.field])" class="validation-error">
+                            {{error}}
+                        </span>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+    </form>
+
+    <p-footer>
+        <ng-container *ngIf="gridDataEditor.formGroup">
+            <div class="buttons-container">
+                <button pButton
+                        [label]="gridDataEditor.cancelButtonText"
+                        icon="pi pi-times"
+                        class="p-button-secondary"
+                        (click)="onEditingDialogCancelButtonClick()">
+                </button>
+                <button pButton
+                        [label]="gridDataEditor.saveButtonText"
+                        icon="pi pi-check"
+                        [disabled]="gridDataEditor.formGroup.invalid || gridDataEditor.pending"
+                        (click)="onEditingDialogSaveButtonClick()">
+                </button>
+            </div>
+        </ng-container>
+    </p-footer>
+</p-dialog>

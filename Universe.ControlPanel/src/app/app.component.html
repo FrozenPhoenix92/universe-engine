@@ -1,0 +1,9 @@
+<p-toast appendTo="body" [autoZIndex]="false" [style]="{ 'z-index': 11050 }"></p-toast>
+<p-confirmDialog #cd appendTo="body" [baseZIndex]="10900" header="Confirm Action">
+	<p-footer>
+		<button type="button" pButton icon="pi pi-times" label="Нет" class="p-button-secondary" (click)="cd.reject()"></button>
+		<button type="button" pButton icon="pi pi-check" label="Да" (click)="cd.accept()"></button>
+	</p-footer>
+</p-confirmDialog>
+
+<router-outlet></router-outlet>

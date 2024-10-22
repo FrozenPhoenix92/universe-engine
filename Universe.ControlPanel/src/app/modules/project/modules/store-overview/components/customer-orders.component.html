@@ -1,0 +1,53 @@
+<grid #customersGrid
+      [gridSettings]="customersGridSettings"
+      [tableSettings]="customersTableSettings"
+      (onRowSelect)="onCustomerSelect()">
+	<ng-template gridColumnTemplate="displayingRow" columnName="photo" let-rowData>
+		<img [src]="rowData.photo" class="customer-photo" />
+	</ng-template>
+</grid>
+<grid *ngIf="customersGrid['selection']"
+      #ordersGrid
+      [gridSettings]="ordersGridSettings"
+      [tableSettings]="ordersTableSettings"
+      class="orders-grid">
+	<ng-template pTemplate="rowexpansion" let-rowData>
+		<tr class="row-expansion">
+			<td [attr.colspan]="ordersTableSettings.columns.length + 2">
+				<div class="order-container">
+					<div *ngFor="let orderLine of rowData['orderLines']" class="order-line">
+						<span class="order-line-param">{{orderLine.product.name}}</span>
+						<span class="order-line-param">{{orderLine.count}}</span>
+						<span class="order-line-param">{{orderLine.price.toFixed(2)}}</span>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</ng-template>
+	<ng-template pTemplate="footer">
+		<tr>
+			<td [attr.colspan]="ordersTableSettings.columns.length + 2">
+				<div class="order-aggregations">
+					<div class="order-aggregations-item">
+						<ng-container *ngIf="ordersGrid.getTableProperty('totalRecords')">
+							<span class="order-aggregations-item-name">Orders count: </span>
+							<span class="order-aggregations-item-value">{{ordersGrid.getTableProperty("totalRecords")}}</span>
+						</ng-container>
+					</div>
+					<div class="order-aggregations-item">
+						<ng-container *ngIf="ordersSum">
+							<span class="order-aggregations-item-name">Orders sum: </span>
+							<span class="order-aggregations-item-value">{{ordersSum.toFixed(2)}}</span>
+						</ng-container>
+					</div>
+					<div class="order-aggregations-item">
+						<ng-container *ngIf="mostFrequentProduct">
+							<span class="order-aggregations-item-name">Most popular product: </span>
+							<span class="order-aggregations-item-value">{{mostFrequentProduct.product.name}} ({{mostFrequentProduct.count}})</span>
+						</ng-container>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</ng-template>
+</grid>

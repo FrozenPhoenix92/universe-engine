@@ -1,0 +1,11 @@
+{
+  "account": {
+    "login": {
+      "header": "Control Panel",
+      "loginButtonText": "Log In",
+      "loginLabel": "Login",
+      "passwordLabel": "Password",
+      "notAuthorizedMessage": "Sorry, you're not authorized."
+    }
+  }
+}

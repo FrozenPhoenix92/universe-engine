@@ -1,0 +1,7 @@
+<h1>Профиль</h1>
+<div class="card ">
+	<p-tabMenu [model]="profileMenuModel" [activeItem]="activeItem"></p-tabMenu>
+	<div class="tab-menu-content">
+		<router-outlet (activate)="onProfilePartActivated($event)"></router-outlet>
+	</div>
+</div>

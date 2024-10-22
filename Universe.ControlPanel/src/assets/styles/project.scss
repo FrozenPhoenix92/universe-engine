@@ -1,0 +1,342 @@
+@import "screen-mixins";
+@import "variables";
+@import "prime-ng-overrides";
+@import "components";
+
+
+/* Inputs group */
+
+.inputs-group {
+    display: block;
+    max-width: 600px;
+
+    .inputs-sub-group-name {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .inputs-group-row {
+        width: 100%;
+        margin-bottom: 20px;
+
+        .inputs-group-row-name {
+            display: inline-block;
+            padding-top: 0.429em;
+            padding-right: 10px;
+            width: 200px;
+            vertical-align: top;
+            font-weight: 500;
+
+            &.asterisk-mark:after {
+                content: "*";
+                display: inline-block;
+                color: red;
+                font-weight: bold;
+            }
+
+            .inputs-group-row-description {
+                cursor: pointer;
+                padding: 5px;
+                background-color: #dddddd;
+                border-radius: 50%;
+                top: -8px;
+                position: relative;
+                margin-left: 5px;
+                font-size: 0.75rem;
+            }
+
+            @include for-phone-only {
+                padding-top: 0;
+                padding-right: 0;
+                width: 100%;
+
+                &.empty-row-name {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        .inputs-group-row-value {
+            display: inline-block;
+            width: 100%;
+
+            @include for-phone-only {
+                padding-left: 0;
+                max-width: unset;
+            }
+
+            .inputs-group-row-value-item {
+                display: block;
+
+                &:not(:last-of-type) {
+                    margin-bottom: 5px;
+                }
+            }
+
+            .p-dropdown, .p-multiselect, .p-inputnumber, .p-calendar, .p-inputtext, input, textarea {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .input-with-button-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .p-dropdown, .p-multiselect, .p-inputnumber, .p-calendar, .p-inputtext, input, textarea {
+                    width: calc(#{100%} - 105px);
+                    max-width: 400px;
+                }
+                .p-button {
+                    width: 100px;
+                }
+            }
+
+            > p-checkbox:first-of-type, > p-radioButton:first-of-type {
+                display: block;
+                padding-top: 0.429em;
+            }
+
+            .validation-error {
+                display: block;
+                margin-top: 5px;
+            }
+
+            &.inputs-group-row-value-uploader {
+                .inputs-group-row-value-uploader-preview-container, .inputs-group-row-value-uploader-description {
+                    margin-top: 5px;
+                    width: 100%;
+                }
+
+                .inputs-group-row-value-uploader-preview-container {
+                    display: flex;
+                    align-items: flex-end;
+
+                    .inputs-group-row-value-uploader-preview-image {
+                        margin-right: 5px;
+                        max-width: calc(#{100%} - 50px);
+                    }
+                }
+            }
+
+            .ql-editing input {
+                width: unset;
+                max-width: unset;
+            }
+        }
+
+        &.no-label-padding {
+            .inputs-group-row-name {
+                padding-top: 0
+            }
+        }
+
+        .inputs-group-row-name + .inputs-group-row-value {
+            padding-left: 10px;
+            width: calc(#{100%} - 200px);
+
+            @include for-phone-only {
+                padding-left: 0;
+                width: 100%;
+
+                .p-float-label {
+                    margin-top: 10px;
+                }
+            }
+        }
+
+        .inputs-group-row-name.capitalized-label {
+            width: 100%;
+
+            & + .inputs-group-row-value {
+                padding-left: 0;
+                width: 100%;
+            }
+        }
+    }
+
+    .buttons-container {
+        margin-top: 25px;
+    }
+
+    &.top-placed-labels {
+        .inputs-group-row {
+            .inputs-group-row-name {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .inputs-group-row-name + .inputs-group-row-value {
+                padding-left: 0;
+                width: 100%;
+
+                .p-dropdown, .p-multiselect, .p-inputnumber, .p-calendar, .p-inputtext, input, textarea {
+                    width: 100%;
+                    max-width: unset;
+                }
+            }
+        }
+    }
+
+    &.no-labels-padding {
+        .inputs-group-row {
+            .inputs-group-row-name {
+                padding-top: 0
+            }
+        }
+    }
+
+    &.full-width {
+        width: 100%;
+        max-width: unset;
+    }
+
+    /* To make one or all labels right side aligned */
+    @include for-tablet-up {
+        &.right-aligned-labels .inputs-group-row-name, .inputs-group-row-name.right-aligned, .inputs-group-row-name .right-aligned {
+            text-align: right;
+        }
+    }
+}
+
+.p-dialog .p-dialog-content .inputs-group {
+    .inputs-group-row {
+        .inputs-group-row-name {
+            width: 150px;
+
+            @include for-phone-only {
+                width: 100%;
+            }
+        }
+
+        .inputs-group-row-name + .inputs-group-row-value {
+            width: calc(#{100%} - 150px);
+
+            @include for-phone-only {
+                width: 100%;
+            }
+        }
+    }
+
+    &.top-placed-labels {
+        .inputs-group-row {
+            .inputs-group-row-name {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .inputs-group-row-name + .inputs-group-row-value {
+                width: 100%;
+                padding-left: 0;
+            }
+        }
+    }
+
+    &.long-labels {
+        .inputs-group-row {
+            .inputs-group-row-name {
+                width: 300px;
+
+                @include for-phone-only {
+                    width: 100%;
+                }
+            }
+
+            .inputs-group-row-name + .inputs-group-row-value {
+                width: calc(#{100%} - 300px);
+
+                @include for-phone-only {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.buttons-container {
+    .p-button {
+        margin-right: 5px;
+    }
+
+    &.buttons-container-center-alignment {
+        text-align: center;
+
+        .p-button {
+            margin-left: 5px;
+        }
+    }
+
+    &.buttons-container-right-alignment {
+        text-align: right;
+
+        .p-button {
+            margin-right: 0;
+        }
+    }
+}
+
+/* Inputs group */
+
+
+.conditional-commissions-container {
+    .conditional-commissions-default {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+
+        .conditional-commissions-default-label {
+            font-size: 18px;
+        }
+        .conditional-commissions-default-value {
+            font-size: 20px;
+        }
+    }
+    .conditional-commissions-item {
+        padding: 20px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #cccccc;
+        width: 100%;
+        margin: 10px 0;
+
+        .conditional-commissions-item-value {
+            margin-bottom: 0;
+        }
+        .conditional-commissions-item-display {
+            .inputs-group-row-value {
+                font-size: 18px;
+                font-weight: bold;
+            }
+        }
+        .conditional-commissions-item-buttons-container {
+            display: flex;
+
+            .p-button {
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+
+.table-expandable-row-border > p-table > .p-datatable > .p-datatable-wrapper > .p-datatable-table > .p-datatable-tbody > .p-selectable-row {
+    border-top: 2px solid #777777;
+
+    td:first-of-type {
+        border-left: 2px solid #777777;
+    }
+    td:last-of-type {
+        border-right: 2px solid #777777;
+    }
+
+    & + .row-expansion {
+        border-bottom: 2px solid #777777;
+        border-left: 2px solid #777777;
+        border-right: 2px solid #777777;
+    }
+    &:last-of-type {
+        border-bottom: 2px solid #777777;
+    }
+}

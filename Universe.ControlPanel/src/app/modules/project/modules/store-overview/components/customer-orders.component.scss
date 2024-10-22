@@ -1,0 +1,44 @@
+:host ::ng-deep {
+    .customer-photo {
+        max-width: 100px;
+        max-height: 200px;
+    }
+
+    .orders-grid {
+        display: block;
+        margin-top: 50px;
+
+        .order-container {
+            .order-line {
+                display: inline-flex;
+                padding: 20px;
+                align-items: center;
+                width: 200px;
+
+                .order-line-param {
+                    padding-right: 10px;
+                }
+            }
+        }
+
+        .order-aggregations {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+
+            .order-aggregations-item {
+                padding: 0 10px;
+
+                .order-aggregations-item-name {
+                    font-size: 18px;
+                    font-style: italic;
+                }
+
+                .order-aggregations-item-value {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+:host ::ng-deep {
+    .account-page-panel {
+        margin: 10vh auto;
+        max-width: 350px;
+
+        h1 {
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 1.75rem;
+        }
+
+        .account-form {
+            .form-row {
+                margin-bottom: .5rem;
+                width: 100%;
+
+                label {
+                    display: block;
+                    margin-bottom: .25rem;
+                }
+                input {
+                    width: 100%;
+                }
+            }
+
+            [type="submit"] {
+                margin: .5rem auto 0;
+            }
+        }
+    }
+}

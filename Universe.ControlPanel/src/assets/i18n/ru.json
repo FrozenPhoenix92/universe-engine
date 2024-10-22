@@ -1,0 +1,11 @@
+{
+  "account": {
+    "login": {
+      "header": "Панель управления",
+      "loginButtonText": "Войти",
+      "loginLabel": "Логин",
+      "passwordLabel": "Пароль",
+      "notAuthorizedMessage": "Извените, вы не авторизованы."
+    }
+  }
+}

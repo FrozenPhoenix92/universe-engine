@@ -1,0 +1,46 @@
+{
+    "AuditDatabaseConnectionSettings": {
+        "DatabaseType": "MsSql",
+        "ConnectionString": "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=universe_audit;Integrated Security=true;"
+    },
+    "ClientAppJwtSettings": {
+        "Audience": "http://localhost:5208",
+        "ExpireTime": 180,
+        "Issuers": [ "http://localhost:3000" ],
+        "SigningKey": "ksd12@B3K7fg&6093?k#k!fdDS09$@PfZ+Q462"
+    },
+    "ClientApplicationSettings": [
+        {
+            "ApplicationCode": "Market",
+            "ApplicationName": "Market",
+            "Issuer": "http://localhost:3000",
+            "CompleteRegistrationCallbackUrl": "/registration",
+            "ReCaptchaSecret": "?????????????"
+        }
+    ],
+    "EmailMessagingSettings": {
+        "EnableSsl": true,
+        "FromAddress": "",
+        "Password": "",
+        "Port": "",
+        "Smtp": "",
+        "UserName": ""
+    },
+    "EnvironmentSettings": {
+        "SpaControlPanelSourcePath": "./", // "wwwroot" for production
+        "SpaControlPanelProxyServer": "http://localhost:4200/", // empty for production
+        "SpaClientOrigins": [ "http://localhost:3000" ],
+        "DataFilesRootFolder": "data"
+    },
+    "FileStorageSettings": {
+        "Folder": "upload",
+        "StorageType": "LocalFolder"
+    },
+    "MainDatabaseConnectionSettings": {
+        "DatabaseType": "MsSql",
+        "ConnectionString": "Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=universe;Integrated Security=true;"
+    },
+    "SecuritySettings": {
+        "SecureDataEncryptionKey": "4!j5vfg2DF3#$pp&"
+    }
+}

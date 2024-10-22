@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Universe.Core.Audit": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:27616;http://localhost:27618"
+    }
+  }
+}

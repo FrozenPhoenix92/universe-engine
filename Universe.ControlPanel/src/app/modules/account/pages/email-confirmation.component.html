@@ -1,0 +1,10 @@
+<h1>Подтверждение адреса электронной почты</h1>
+<div class="sign-in-link-container">
+	<a routerLink="/sign-in">Авторизация</a>
+</div>
+<p-messages *ngIf="resultMessage"
+            [(value)]="resultMessage"
+            [enableService]="false"
+            [closable]="false"
+            styleClass="p-messages-vertical-orientation">
+</p-messages>

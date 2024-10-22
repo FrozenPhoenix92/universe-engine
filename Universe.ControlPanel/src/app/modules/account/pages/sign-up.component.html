@@ -1,0 +1,92 @@
+<h1>Регистрация</h1>
+<div class="sign-in-link-container">
+	<a routerLink="/sign-in">Авторизация</a>
+</div>
+<ng-container *ngIf="initialized">
+	<ng-container *ngIf="selfSignUpAllowed; else disabledMessage">
+		<form *ngIf="!response; else signUpResult"
+		      [formGroup]="form"
+		      autocomplete="off"
+		      class="account-form"
+		      (ngSubmit)="signUp()">
+			<p-messages *ngIf="errorMessage"
+			            [value]="errorMessage"
+			            [enableService]="false"
+			            styleClass="p-messages-vertical-orientation">
+			</p-messages>
+			<div class="form-row">
+				<label for="userName">{{accountService.isSameUserNameEmail ? "Адрес электронной почты" : "Логин"}}</label>
+				<input formControlName="userName"
+				       type="text"
+				       id="userName"
+				       name="userName"
+				       autocomplete="off"
+				       pInputText />
+			</div>
+			<div *ngIf="!accountService.isSameUserNameEmail" class="form-row">
+				<label for="email">Адрес электронной почты</label>
+				<input formControlName="email"
+				       type="text"
+				       id="email"
+				       name="email"
+				       autocomplete="off"
+				       pInputText />
+			</div>
+			<div class="form-row">
+				<label for="firstName">Имя</label>
+				<input formControlName="firstName"
+				       type="text"
+				       id="firstName"
+				       name="firstName"
+				       autocomplete="off"
+				       pInputText />
+			</div>
+			<div class="form-row">
+				<label for="lastName">Фамилия</label>
+				<input formControlName="lastName"
+				       type="text"
+				       id="lastName"
+				       name="lastName"
+				       autocomplete="off"
+				       pInputText />
+			</div>
+			<div class="form-row">
+				<label for="password">Пароль</label>
+				<input formControlName="password"
+				       type="password"
+				       id="password"
+				       name="password"
+				       autocomplete="off"
+				       pPassword />
+			</div>
+			<div class="form-row">
+				<label for="passwordConfirmation">Повторите пароль</label>
+				<input formControlName="passwordConfirmation"
+				       type="password"
+				       id="passwordConfirmation"
+				       name="passwordConfirmation"
+				       autocomplete="off"
+				       pPassword
+				       [feedback]="false" />
+			</div>
+			<div class="text-center">
+				<p-button type="submit"
+				          [disabled]="form.invalid"
+				          label="Регистрация"
+				          icon="pi pi-id-card"
+				          [loading]="formRequestPending">
+				</p-button>
+			</div>
+		</form>
+		<ng-template #signUpResult>
+			<p-messages [(value)]="resultMessage"
+			            [enableService]="false"
+			            [closable]="false"
+			            styleClass="p-messages-vertical-orientation">
+			</p-messages>
+		</ng-template>
+	</ng-container>
+	<ng-template #disabledMessage>
+		<p-message severity="warning" text="Регистрания отключена."></p-message>
+	</ng-template>
+</ng-container>

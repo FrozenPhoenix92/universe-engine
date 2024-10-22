@@ -1,0 +1,41 @@
+p-inputnumber {
+    .p-inputnumber {
+        .p-inputnumber-button-group {
+            .p-inputnumber-button {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.p-messages-vertical-orientation {
+    .p-message {
+        .p-message-wrapper {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .p-message-icon {
+                margin-bottom: 10px;
+            }
+            .p-message-summary {
+                margin-bottom: 10px;
+            }
+            .p-message-detail {
+                margin-bottom: 10px;
+                margin-left: 0;
+            }
+            .p-message-close {
+                order: -1;
+                margin-bottom: -15px;
+            }
+        }
+    }
+}
+
+.p-dialog {
+    .p-dialog-footer {
+        .buttons-container {
+            padding-top: 10px;
+        }
+    }
+}

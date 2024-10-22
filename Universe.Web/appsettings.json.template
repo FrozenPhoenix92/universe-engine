@@ -1,0 +1,23 @@
+{
+    "MainDatabaseConnectionSettings": {
+        "DatabaseType": "MySql",
+        "ConnectionString": "server=localhost;port=3306;database=universe;Uid=root;Pwd=carbon"
+    },
+    "AuditDatabaseConnectionSettings": {
+        "DatabaseType": "MySql",
+        "ConnectionString": "server=localhost;port=3306;database=universe_audit;Uid=root;Pwd=carbon"
+    },
+    "EnvironmentSettings": {
+        "SpaControlPanelSourcePath": "./", // "wwwroot" for production
+        "SpaControlPanelProxyServer": "http://localhost:4200/", // empty for production
+        "SpaClientOrigin": "http://localhost:3000/"
+    },
+    "EmailMessagingSettings": {
+        "EnableSsl": true,
+        "FromAddress": "boyko_igor92@mail.ru",
+        "Password": "Carbon1992####",
+        "Port": "465",
+        "Smtp": "smtp.mail.ru",
+        "UserName": "boyko_igor92@mail.ru"
+    }
+}

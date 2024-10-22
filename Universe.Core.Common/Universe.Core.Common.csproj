@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Universe.Core.AppConfiguration\Universe.Core.AppConfiguration.csproj" />
+    <ProjectReference Include="..\Universe.Core.Audit\Universe.Core.Audit.csproj" />
+    <ProjectReference Include="..\Universe.Core.Membership\Universe.Core.Membership.csproj" />
+    <ProjectReference Include="..\Universe.Core\Universe.Core.csproj" />
+    <ProjectReference Include="..\Universe.Messaging\Universe.Messaging.csproj" />
+  </ItemGroup>
+
+</Project>

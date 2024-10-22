@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Universe.Messaging": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:27617;http://localhost:27619"
+    }
+  }
+}

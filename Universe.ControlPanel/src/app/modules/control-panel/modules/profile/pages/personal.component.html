@@ -1,0 +1,24 @@
+<form [formGroup]="form" class="inputs-group">
+	<div class="inputs-group-row no-label-padding">
+		<span class="inputs-group-row-name">Адрес электрнонной почты</span>
+		<span class="inputs-group-row-value">{{profilePersonal?.email}}</span>
+	</div>
+	<div class="inputs-group-row">
+		<label for="firstName" class="inputs-group-row-name">Имя</label>
+		<div class="inputs-group-row-value">
+			<input formControlName="firstName" id="firstName" name="firstName" pInputText type="text" />
+		</div>
+	</div>
+	<div class="inputs-group-row">
+		<label for="lastName" class="inputs-group-row-name">Фамилия</label>
+		<div class="inputs-group-row-value">
+			<input formControlName="lastName" id="lastName" name="lastName" pInputText type="text" />
+		</div>
+	</div>
+	<div class="inputs-group-row">
+		<label for="phoneNumber" class="inputs-group-row-name">Номер телефона</label>
+		<div class="inputs-group-row-value">
+			<input formControlName="phoneNumber" id="phoneNumber" name="phoneNumber" pInputText type="text" />
+		</div>
+	</div>
+</form>

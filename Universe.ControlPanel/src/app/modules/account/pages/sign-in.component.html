@@ -1,0 +1,39 @@
+<h1>Авторизация</h1>
+<form [formGroup]="form" class="account-form" (ngSubmit)="signIn()">
+	<div *ngIf="selfSignUpAllowed" class="sign-up-link-container">
+		<a routerLink="/sign-up">Регистрация</a>
+	</div>
+	<p-messages *ngIf="errorMessage"
+	            [(value)]="errorMessage"
+	            [enableService]="false"
+	            styleClass="p-messages-vertical-orientation">
+	</p-messages>
+	<div class="form-row">
+		<label for="login">Логин</label>
+		<input formControlName="login"
+		       type="text"
+		       id="login"
+		       name="login"
+		       pInputText />
+	</div>
+	<div class="form-row">
+		<label for="password">Пароль</label>
+		<input formControlName="password"
+		       type="password"
+		       id="password"
+		       name="password"
+		       pPassword
+		       [feedback]="false" />
+	</div>
+	<div class="forgot-password-link-container">
+		<a routerLink="/forgot-password">Восстановление пароля</a>
+	</div>
+	<div class="text-center">
+		<p-button type="submit"
+		        [disabled]="form.invalid"
+		        label="Вход"
+		        icon="pi pi-lock"
+		        [loading]="formRequestPending">
+		</p-button>
+	</div>
+</form>

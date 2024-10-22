@@ -1,0 +1,31 @@
+﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+        "applicationUrl": "http://localhost:5208",
+        "sslPort": 0
+    }
+  },
+  "profiles": {
+    "Universe": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "http://localhost:5208",
+        "environmentVariables": {
+            "EB_TARGET_URL": "https://e275371a3d3f.ngrok.io",
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+    },
+    "IIS Express": {
+        "commandName": "IISExpress",
+        "launchBrowser": true,
+        "environmentVariables": {
+            "EB_TARGET_URL": "https://e275371a3d3f.ngrok.io",
+            "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+    }
+  }
+}
