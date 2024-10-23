@@ -66,12 +66,12 @@ export class AccountComponent implements OnInit, OnDestroy {
 	private init(): void {
 		const formModel = {
 			userName: new FormControl(
-				"boyko_igor92@mail.ru",
+				"",
 				this.accountService.isSameUserNameEmail ? Validators.email : notEmptyValidator()),
-			password: new FormControl("Carbon1992####", notEmptyValidator()),
-			passwordConfirmation: new FormControl("Carbon1992####", [notEmptyValidator(), matchValidator("password")]),
-			firstName: new FormControl("Игорь", notEmptyValidator()),
-			lastName: new FormControl("Бойко", notEmptyValidator())
+			password: new FormControl("", notEmptyValidator()),
+			passwordConfirmation: new FormControl("", [notEmptyValidator(), matchValidator("password")]),
+			firstName: new FormControl("", notEmptyValidator()),
+			lastName: new FormControl("", notEmptyValidator())
 		};
 
 		if (!this.accountService.isSameUserNameEmail) {
